@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 if [[ "$(id -u)" -ne 0]];
 then
   echo "Please, Run This Prgramm as Root!"
