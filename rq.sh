@@ -1,5 +1,13 @@
 #!/bin/bash
-command -v curl > /dev/null 2>&1 || {  echo >&2 "I require curl but it is not installed. \n installing it.."; apt install curl -y; }
-command -v python > /dev/null 2>&1 || {  echo >&2 "I require python but it is not installed. \n installing it.."; apt install python -y; }
-command -v pip > /dev/null 2>&1 || {  echo >&2 "I require pip but it is not installed. \n installing it.."; curl https:bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py ; }
-command -v toilet > /dev/null 2>&1 || {  echo >&2 "I require toilet package but it is not installed. \n installing it.."; apt install toilet -y; }
+if [[ "$(id -u)" -ne 0]];
+then
+  echo "Please, Run This Prgramm as Root!"
+  exit 1
+fi
+function main() {
+    command -v curl > /dev/null 2>&1 || {  echo >&2 "I require curl but it is not installed. \n installing it.."; apt install curl -y; }
+    command -v python > /dev/null 2>&1 || {  echo >&2 "I require python but it is not installed. \n installing it.."; apt install python -y; }
+    command -v pip > /dev/null 2>&1 || {  echo >&2 "I require pip but it is not installed. \n installing it.."; curl https:bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py ; }
+    command -v toilet > /dev/null 2>&1 || {  echo >&2 "I require toilet package but it is not installed. \n installing it.."; apt install toilet -y; }
+}
+main
