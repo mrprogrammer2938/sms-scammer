@@ -1,11 +1,19 @@
 import requests, os, sys, time, datetime
 from requests import get
+import platform
 starttime = datetime.datetime.now().strftime("%X")
 print("\033[96mCoded by github.com/Sanif007 \033[0m ")
 print("\033[93m Version 4.0 \033[0m")
 print("\033[91m Checking dependencies... \033[0m")
-time.sleep(2)
-os.system("bash rq.sh")
+time.sleep(0.25)
+def cls():
+    if platform.system() == 'Linux':
+	os.system("clear")
+    elif platform.system() == 'Windows':
+	os.system("cls")
+    else:
+	 print("\nPlease, Run This Programm on Linux, Windows or MacOS!\n")
+	 quit
 def menu() :
     print("\033[91m1. \033[92mSend anonymous sms\033[0m")
     print("\033[91m2. \033[92mCheck status of sms\033[0m")
@@ -54,7 +62,7 @@ def history() :
                     os.system("cat sess.txt")
                 else :
                     print("Thanks for using sms-scammer, please keep supporting us.\nGithub : github.com/Sanif007")
-            elif ses_number == 1: 
+            elif ses_numbers == 1: 
                 print(file.readline)
             else :
                 print("either file is empty or any error occurred!")
@@ -81,7 +89,7 @@ def help() :
     else :
         print("Invalid option!! \n exiting.. Sorry..")
         exit()
-os.system("clear")
+cls()
 os.system("toilet -f mono12 -F gay Scammer")
 print("\033[94m########################## \033[31mVr. 4.0\033[0m \033[94m#########################  ")
 print("\033[1;96mCoded by github.com/Sanif007 \033[0m")
@@ -94,6 +102,16 @@ elif ip_c == "no" or ip_c == "n" :
    print("\033[93;101mi hope you know what you are doing. :) \033[0m")
 else :
    print("invalid option!! type yes or no ")
-menu()
-control()
-
+if __name__ == '__main__':
+  try:
+     try:
+	menu()
+	control()
+     except EOFError:
+         print("\nCtrl + D")
+	 print("\nExiting...")
+	 quit
+except KeyboardInterrupt:
+	print("\nCtrl + C")
+	print("\nExiting...")
+	quit
