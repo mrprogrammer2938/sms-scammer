@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import requests, os, sys, time, datetime
 from requests import get
 import platform
